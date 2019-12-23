@@ -10,7 +10,6 @@ import lombok.Getter;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.NPC;
-import net.runelite.api.NpcID;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.NpcDespawned;
@@ -24,7 +23,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 @PluginDescriptor(
 	name = "Master Farmer",
 	description = "Displays helpful information while pickpocketing master farmers",
-	tags = {"farm", "master", "farmer"},
+	tags = {"master", "farmer", "thieving"},
 	enabledByDefault = false
 )
 public class MasterFarmerPlugin extends Plugin
@@ -74,7 +73,7 @@ public class MasterFarmerPlugin extends Plugin
 			return;
 		}
 
-		if (npc.getId() == NpcID.MASTER_FARMER || npc.getId() == NpcID.MASTER_FARMER_3258)
+		if (npc.getName().equals("Master Farmer"))
 		{
 			masterFarmers.putIfAbsent(npc.getIndex(), new MasterFarmerNPC(npc));
 		}
@@ -91,7 +90,7 @@ public class MasterFarmerPlugin extends Plugin
 			return;
 		}
 
-		if (npc.getId() == NpcID.MASTER_FARMER || npc.getId() == NpcID.MASTER_FARMER_3258)
+		if (npc.getName().equals("Master Farmer"))
 		{
 			masterFarmers.remove(npc.getIndex());
 		}
@@ -121,7 +120,7 @@ public class MasterFarmerPlugin extends Plugin
 				continue;
 			}
 
-			if (npc.getId() == NpcID.MASTER_FARMER || npc.getId() == NpcID.MASTER_FARMER_3258)
+			if (npcName.equals("Master Farmer"))
 			{
 				final MasterFarmerNPC mf = masterFarmers.get(npc.getIndex());
 

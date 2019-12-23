@@ -10,6 +10,16 @@ import net.runelite.client.config.Range;
 @ConfigGroup("masterfarmerplugin")
 public interface MasterFarmerConfig extends Config
 {
+	@ConfigItem(
+		keyName = "showOverlay",
+		name = "Show timer over the master farmer",
+		description = "Configures whether or not to have a timer over the master farmer"
+	)
+	default boolean showOverlay()
+	{
+		return true;
+	}
+
 	@Alpha
 	@ConfigItem(
 		keyName = "timerColor",
@@ -19,16 +29,6 @@ public interface MasterFarmerConfig extends Config
 	default Color timerColor()
 	{
 		return Color.WHITE;
-	}
-
-	@ConfigItem(
-		keyName = "showOverlay",
-		name = "Show timer over the master farmer",
-		description = "Configures whether or not to have a timer over the master farmer"
-	)
-	default boolean showOverlay()
-	{
-		return true;
 	}
 
 	@Range(
